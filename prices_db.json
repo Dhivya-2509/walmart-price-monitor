@@ -4,7 +4,7 @@
     "item_id": "11381374703",
     "retailer": "Amazon",
     "url": "https://www.amazon.com/dp/B0DGHMNQ5Z/?th=1",
-    "price": 99.0,
+    "price": 99.99,
     "manual": true,
     "last_updated": "2026-06-24T00:00:00"
   },
@@ -14,8 +14,7 @@
     "retailer": "B&H Photo",
     "url": "https://www.bhphotovideo.com/c/product/1852454-REG/apple_mxp63ll_a_airpods_4.html",
     "price": 119.95,
-    "manual": false,
-    "last_updated": "2026-06-24T15:19:03.632122"
+    "last_updated": "2026-06-24T16:19:14.058218"
   },
   "11381374703|Best Buy": {
     "product_name": "AirPods 4",
@@ -23,8 +22,7 @@
     "retailer": "Best Buy",
     "url": "https://www.bestbuy.com/site/apple-airpods-4-white/6447384.p?skuId=6447384",
     "price": 99.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "last_updated": "2026-06-24T16:19:14.058595"
   },
   "11381374703|Sam's Club": {
     "product_name": "AirPods 4",
@@ -33,7 +31,7 @@
     "url": "https://www.samsclub.com/p/airpods-gen-4-airpods-gen-4/P990357932?xid=plp_product_5",
     "price": 119.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:19:03.632150"
+    "last_updated": "2026-06-24T17:32:17.472569"
   },
   "11381374703|Staples": {
     "product_name": "AirPods 4",
@@ -42,7 +40,7 @@
     "url": "https://www.staples.com/apple-airpods-4-wireless-ambient-sound-earbuds-with-usb-c-charging-case-4th-generation-bluetooth-white-mxp63ll-a/product_24616046",
     "price": 129.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:19:03.632157"
+    "last_updated": "2026-06-24T17:32:17.472593"
   },
   "11381374703|Target": {
     "product_name": "AirPods 4",
@@ -50,8 +48,8 @@
     "retailer": "Target",
     "url": "https://www.target.com/p/apple-airpods-4/-/A-93606140?preselect=85978615#lnk=sametab",
     "price": 99.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:32:17.472600"
   },
   "11384707978|Amazon": {
     "product_name": "AirPods 4 ANC",
@@ -86,8 +84,8 @@
     "retailer": "Costco",
     "url": "https://www.costco.com/airpods-4-with-active-noise-cancellation.product.4000308504.html",
     "price": 148.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:24:47.189957"
   },
   "11384707978|Sam's Club": {
     "product_name": "AirPods 4 ANC",
@@ -96,7 +94,7 @@
     "url": "https://www.samsclub.com/p/airpods-generation-4-active-noise-cancellation/P990357939?xid=plp_product_3",
     "price": 169.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:20:47.642515"
+    "last_updated": "2026-06-24T17:33:21.185793"
   },
   "11384707978|Staples": {
     "product_name": "AirPods 4 ANC",
@@ -105,7 +103,7 @@
     "url": "https://www.staples.com/apple-airpods-noise-canceling-earbuds-with-usb-c-charging-case-4th-generation-bluetooth-white-mxp93ll-a/product_24616047",
     "price": 179.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:20:47.642524"
+    "last_updated": "2026-06-24T17:33:21.185824"
   },
   "11384707978|Target": {
     "product_name": "AirPods 4 ANC",
@@ -113,15 +111,15 @@
     "retailer": "Target",
     "url": "https://www.target.com/p/apple-airpods-4/-/A-93606140?preselect=85978618#lnk=sametab",
     "price": 149.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:24:47.190003"
   },
   "19897915079|Amazon": {
     "product_name": "AirPods Max 2",
     "item_id": "19897915079",
     "retailer": "Amazon",
     "url": "https://www.amazon.com/dp/B0GSS4SGZR/?th=1",
-    "price": 399.0,
+    "price": 479.0,
     "manual": true,
     "last_updated": "2026-06-24T00:00:00"
   },
@@ -131,8 +129,8 @@
     "retailer": "B&H Photo",
     "url": "https://www.bhphotovideo.com/c/product/1959755-REG/apple_mhwk4am_a_airpods_max_2_wireless.html",
     "price": 539.0,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:14:25.886131"
   },
   "19897915079|Best Buy": {
     "product_name": "AirPods Max 2",
@@ -140,8 +138,8 @@
     "retailer": "Best Buy",
     "url": "https://www.bestbuy.com/product/apple-airpods-max-2-usb-c-midnight/JJGCQYH99P",
     "price": 479.0,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:25:30.410481"
   },
   "19897915079|Costco": {
     "product_name": "AirPods Max 2",
@@ -159,7 +157,7 @@
     "url": "https://www.samsclub.com/ip/Apple-AirPods-Max-2/19906003964",
     "price": 549.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:21:29.095213"
+    "last_updated": "2026-06-24T17:34:02.080634"
   },
   "19897915079|Staples": {
     "product_name": "AirPods Max 2",
@@ -168,7 +166,7 @@
     "url": "https://www.staples.com/apple-airpods-max-wireless-active-noise-canceling-over-ear-headphones-bluetooth-purple-mww83am-a/product_24617066",
     "price": 608.99,
     "manual": false,
-    "last_updated": "2026-06-24T15:21:29.095231"
+    "last_updated": "2026-06-24T17:34:02.080658"
   },
   "19897915079|Target": {
     "product_name": "AirPods Max 2",
@@ -176,8 +174,8 @@
     "retailer": "Target",
     "url": "https://www.target.com/p/apple-airpods-max-2/-/A-1010453160?preselect=80585771#lnk=sametab",
     "price": 549.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:25:30.410510"
   },
   "17835006350|Amazon": {
     "product_name": "AirPods Pro 3",
@@ -185,8 +183,7 @@
     "retailer": "Amazon",
     "url": "https://www.amazon.com/dp/B0FQFB8FMG/?th=1",
     "price": 179.0,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "last_updated": "2026-06-24T16:22:34.565397"
   },
   "17835006350|B&H Photo": {
     "product_name": "AirPods Pro 3",
@@ -194,8 +191,8 @@
     "retailer": "B&H Photo",
     "url": "https://www.bhphotovideo.com/c/product/1920300-REG/apple_mfhp4ll_a_airpods_pro_with_wireless.html",
     "price": 239.95,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:15:45.768612"
   },
   "17835006350|Best Buy": {
     "product_name": "AirPods Pro 3",
@@ -203,17 +200,17 @@
     "retailer": "Best Buy",
     "url": "https://www.bestbuy.com/product/apple-airpods-pro-3-wireless-active-noise-cancelling-earbuds-with-heart-rate-sensing-feature-white/JJGCQLYK5F",
     "price": 179.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:15:45.768632"
   },
   "17835006350|Costco": {
     "product_name": "AirPods Pro 3",
     "item_id": "17835006350",
     "retailer": "Costco",
     "url": "https://www.costco.com/apple-airpods-pro-3-wireless-earbuds-active-noise-cancellation-hearing-aid-feature-heart-rate-sensing-includes-2-years-of-applecare.product.4000404510.html",
-    "price": 209.99,
+    "price": 229.99,
     "manual": false,
-    "last_updated": "2026-06-24T15:22:30.469049"
+    "last_updated": "2026-06-24T17:35:00.121860"
   },
   "17835006350|Sam's Club": {
     "product_name": "AirPods Pro 3",
@@ -222,7 +219,7 @@
     "url": "https://www.samsclub.com/ip/Apple-AirPods-Pro-3/17809063756?classType=REGULAR",
     "price": 249.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:22:30.469084"
+    "last_updated": "2026-06-24T17:35:00.121895"
   },
   "17835006350|Staples": {
     "product_name": "AirPods Pro 3",
@@ -231,7 +228,7 @@
     "url": "https://www.staples.com/apple-airpods-pro-3-wireless-active-noise-canceling-earbuds-bluetooth-white-mfhp4ll-a/product_24663589",
     "price": 249.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:22:30.469092"
+    "last_updated": "2026-06-24T17:35:00.121905"
   },
   "17835006350|Target": {
     "product_name": "AirPods Pro 3",
@@ -239,7 +236,7 @@
     "retailer": "Target",
     "url": "https://www.target.com/p/ap2022-true-wireless-bluetooth-headphones/-/A-85978609#lnk=sametab",
     "price": 179.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T17:26:21.087999"
   }
 }

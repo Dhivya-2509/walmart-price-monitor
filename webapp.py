@@ -107,17 +107,30 @@ async def _do_scrape():
             retailer = result["retailer"]
             url = result["url"]
             new_price = result["price"]
+            error = result.get("error")
             key = f"{item_id}|{retailer}"
 
             if new_price is None:
                 failed += 1
+                log.warning(f"  [{retailer}] skipped — {error or 'price not found'}")
                 continue
 
             scraped += 1
             old_entry = db.get(key)
             old_price = old_entry["price"] if old_entry and not old_entry.get("manual") else None
 
-            # Sanity check: reject prices that are suspiciously different (scraping error)
+            # Sanity check 1: price vs Walmart price — catches bot-redirect pages
+            # returning completely unrelated product prices
+            if walmart_price and walmart_price > 0:
+                if new_price < walmart_price * 0.30:
+                    log.warning(
+                        f"  [{retailer}] Price ${new_price:.2f} is unrealistically"
+                        f" below Walmart ${walmart_price:.2f} — likely bot-redirect, skipping"
+                    )
+                    failed += 1
+                    continue
+
+            # Sanity check 2: reject prices that moved too far from last stored value
             if old_price and old_price > 0:
                 ratio = new_price / old_price
                 if ratio < 0.5 or ratio > 4.0:

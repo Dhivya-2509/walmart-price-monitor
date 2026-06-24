@@ -31,17 +31,21 @@ SITE_SELECTORS: dict[str, list[str]] = {
         '[class*="price_Price"]',
     ],
     "amazon.com": [
+        # Specific buy-box selectors only — no broad '.a-price .a-offscreen'
+        # (that picks up prices from "Frequently bought together" on bot-redirect pages)
         '.a-price.apexPriceToPay .a-offscreen',
-        '#apex_desktop_newAccordionRow .a-price .a-offscreen',
+        '.a-price.priceToPay .a-offscreen',
         '#corePriceDisplay_desktop_feature_div .a-price .a-offscreen',
+        '#apex_desktop_newAccordionRow .a-price .a-offscreen',
         '[data-feature-name="apex_desktop"] .a-price .a-offscreen',
-        '.a-price[data-a-size="xl"] .a-offscreen',
-        '.a-price[data-a-size="b"] .a-offscreen',
-        '.a-price .a-offscreen',
+        '#buybox .a-price .a-offscreen',
         '#price_inside_buybox',
         '#priceblock_ourprice',
         '#priceblock_dealprice',
         '.priceToPay .a-offscreen',
+        '.a-price[data-a-size="xl"] .a-offscreen',  # XL = buy box size
+        # REMOVED: '.a-price[data-a-size="b"] .a-offscreen' — too broad
+        # REMOVED: '.a-price .a-offscreen' — way too broad, picks up wrong prices from bot pages
     ],
     "bestbuy.com": [
         '[class*="priceView-customer-price"] span:first-child',
@@ -115,6 +119,7 @@ def _price_from_source(text: str) -> float | None:
 
 async def _extract_price(page, url: str) -> float | None:
     hostname = urlparse(url).hostname or ""
+    is_amazon = "amazon.com" in hostname
 
     # 1. Site-specific CSS selectors
     for domain, selectors in SITE_SELECTORS.items():
@@ -135,6 +140,12 @@ async def _extract_price(page, url: str) -> float | None:
                 except Exception:
                     continue
             break
+
+    # Amazon: stop here — don't fall through to JSON-LD or raw page source.
+    # Bot-redirect pages contain prices from unrelated "Frequently bought together"
+    # products in their HTML, causing wildly wrong prices to be stored.
+    if is_amazon:
+        return None
 
     # 2. JSON-LD
     try:
@@ -219,6 +230,23 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
                 try:
                     await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
                     await page.wait_for_timeout(wait_ms)
+
+                    # Amazon bot/CAPTCHA detection: if we're on a robot-check page,
+                    # bail immediately instead of extracting a wrong price.
+                    if "amazon.com" in hostname:
+                        try:
+                            title = (await page.title()).lower()
+                            current_url = page.url.lower()
+                            bot_signals = [
+                                "robot check", "captcha", "enter the characters",
+                                "sorry, we just need", "automated access", "ap/signin",
+                            ]
+                            if any(s in title or s in current_url for s in bot_signals):
+                                log.warning(f"  [{retailer}] Amazon bot-check detected (title: {await page.title()!r})")
+                                result["error"] = "Amazon bot-check / CAPTCHA"
+                                return result
+                        except Exception:
+                            pass
 
                     price = await _extract_price(page, url)
                     if price:
