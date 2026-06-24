@@ -20,6 +20,7 @@ from playwright.async_api import async_playwright, TimeoutError as PlaywrightTim
 log = logging.getLogger(__name__)
 
 PRICE_REGEX = re.compile(r"\$?([\d,]+\.\d{2})")
+_AMAZON_ASIN_RE = re.compile(r"/dp/([A-Z0-9]{10})")
 
 CHROME_PATH = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 CHROME_PROFILE = r"C:\Users\d0n07ev\AppData\Local\Google\Chrome\User Data"
@@ -80,6 +81,13 @@ SITE_SELECTORS: dict[str, list[str]] = {
         '.pricing-price .value',
         '[itemprop="price"]',
     ],
+    "camelcamelcamel.com": [
+        # Verified via live DOM inspection 2026-06-24:
+        # Main buy-box current Amazon price (excludes hidden used/3rd-party span.smaller.bgp)
+        'span.bgp:not(.smaller)',
+        # Current price from Amazon price history table row
+        'tr.pt.amazon.on td:nth-child(4)',
+    ],
 }
 
 
@@ -124,7 +132,6 @@ def _price_from_source(text: str) -> float | None:
 
 async def _extract_price(page, url: str) -> float | None:
     hostname = urlparse(url).hostname or ""
-    is_amazon = "amazon.com" in hostname
 
     # 1. Site-specific CSS selectors
     for domain, selectors in SITE_SELECTORS.items():
@@ -145,12 +152,6 @@ async def _extract_price(page, url: str) -> float | None:
                 except Exception:
                     continue
             break
-
-    # Amazon: stop here — don't fall through to JSON-LD or raw page source.
-    # Bot-redirect pages contain prices from unrelated "Frequently bought together"
-    # products in their HTML, causing wildly wrong prices to be stored.
-    if is_amazon:
-        return None
 
     # 2. JSON-LD
     try:
@@ -205,6 +206,14 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
         result["error"] = "No URL"
         return result
 
+    # Amazon: redirect to CamelCamelCamel to get live prices without bot detection
+    actual_url = url
+    if "amazon.com" in (urlparse(url).hostname or ""):
+        m = _AMAZON_ASIN_RE.search(url)
+        if m:
+            actual_url = f"https://camelcamelcamel.com/product/{m.group(1)}"
+            log.info(f"  [{retailer}] using CamelCamelCamel (ASIN {m.group(1)}) to avoid Amazon block")
+
     # Random jitter 0-2s: staggers concurrent requests so the corporate proxy
     # doesn't receive all connections simultaneously and fail with ERR_PROXY_CONNECTION_FAILED
     await asyncio.sleep(random.uniform(0, 2.0))
@@ -212,7 +221,7 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
     async with semaphore:
         page = None
         try:
-            hostname = urlparse(url).hostname or ""
+            hostname = urlparse(actual_url).hostname or ""
             # Costco price loads via a separate React render; needs more time
             if "costco.com" in hostname:
                 wait_ms = 11000
@@ -238,7 +247,7 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
 
             for attempt in range(2):
                 try:
-                    await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
+                    await page.goto(actual_url, wait_until="domcontentloaded", timeout=45_000)
 
                     # For Costco: wait for the React price component to render
                     # (verified selector: data-testid="single-price-content")
@@ -253,24 +262,7 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
                     else:
                         await page.wait_for_timeout(wait_ms)
 
-                    # Amazon bot/CAPTCHA detection: if we're on a robot-check page,
-                    # bail immediately instead of extracting a wrong price.
-                    if "amazon.com" in hostname:
-                        try:
-                            title = (await page.title()).lower()
-                            current_url = page.url.lower()
-                            bot_signals = [
-                                "robot check", "captcha", "enter the characters",
-                                "sorry, we just need", "automated access", "ap/signin",
-                            ]
-                            if any(s in title or s in current_url for s in bot_signals):
-                                log.warning(f"  [{retailer}] Amazon bot-check detected (title: {await page.title()!r})")
-                                result["error"] = "Amazon bot-check / CAPTCHA"
-                                return result
-                        except Exception:
-                            pass
-
-                    price = await _extract_price(page, url)
+                    price = await _extract_price(page, actual_url)
                     if price:
                         result["price"] = round(price, 2)
                         log.info(f"  [{retailer}] ${price:.2f}")
