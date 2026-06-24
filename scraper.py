@@ -67,8 +67,9 @@ SITE_SELECTORS: dict[str, list[str]] = {
     "costco.com": [
         '.your-price .value',
         '[automation-id="product-price"]',
+        '.pricing-price .value',
         '[itemprop="price"]',
-        'div[class*="price"] span',
+        # Removed 'div[class*="price"] span' — too broad, picks up regular/non-sale price
     ],
 }
 
@@ -95,11 +96,11 @@ def _price_from_source(text: str) -> float | None:
         r'"salePrice"\s*:\s*([\d.]+)',
         r'"finalPrice"\s*:\s*([\d.]+)',
         r'"lowestPrice"\s*:\s*([\d.]+)',
-        r'"listPrice"\s*:\s*([\d.]+)',
-        r'"regularPrice"\s*:\s*([\d.]+)',
         r'"discountedPrice"\s*:\s*([\d.]+)',
         r'"customerPrice"\s*:\s*([\d.]+)',    # Best Buy
         r'"price"\s*:\s*"?([\d.]+)"?',
+        r'"listPrice"\s*:\s*([\d.]+)',        # fallback — pre-sale/regular price
+        r'"regularPrice"\s*:\s*([\d.]+)',     # fallback — pre-sale/regular price
     ]:
         m = re.search(pat, text)
         if m:
