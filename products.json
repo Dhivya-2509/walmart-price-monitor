@@ -1,0 +1,142 @@
+[
+  {
+    "item_id": "11381374703",
+    "product_name": "AirPods 4",
+    "walmart_price": 65.00,
+    "competitors": [
+      {
+        "name": "Amazon",
+        "url": "https://www.amazon.com/dp/B0DGHMNQ5Z/?th=1"
+      },
+      {
+        "name": "B&H Photo",
+        "url": "https://www.bhphotovideo.com/c/product/1852454-REG/apple_mxp63ll_a_airpods_4.html"
+      },
+      {
+        "name": "Best Buy",
+        "url": "https://www.bestbuy.com/site/apple-airpods-4-white/6447384.p?skuId=6447384"
+      },
+      {
+        "name": "Costco",
+        "url": null
+      },
+      {
+        "name": "Sam's Club",
+        "url": "https://www.samsclub.com/p/airpods-gen-4-airpods-gen-4/P990357932?xid=plp_product_5"
+      },
+      {
+        "name": "Staples",
+        "url": "https://www.staples.com/apple-airpods-4-wireless-ambient-sound-earbuds-with-usb-c-charging-case-4th-generation-bluetooth-white-mxp63ll-a/product_24616046"
+      },
+      {
+        "name": "Target",
+        "url": "https://www.target.com/p/apple-airpods-4/-/A-93606140?preselect=85978615#lnk=sametab"
+      }
+    ]
+  },
+  {
+    "item_id": "11384707978",
+    "product_name": "AirPods 4 ANC",
+    "walmart_price": 148.99,
+    "competitors": [
+      {
+        "name": "Amazon",
+        "url": "https://www.amazon.com/dp/B0DGJ7HYG1/?th=1"
+      },
+      {
+        "name": "B&H Photo",
+        "url": "https://www.bhphotovideo.com/c/product/1852457-REG/apple_mxp93ll_a_airpods_4_with_active.html"
+      },
+      {
+        "name": "Best Buy",
+        "url": "https://www.bestbuy.com/site/apple-airpods-4-with-active-noise-cancellation-white/6447385.p?skuId=6447385"
+      },
+      {
+        "name": "Costco",
+        "url": "https://www.costco.com/airpods-4-with-active-noise-cancellation.product.4000308504.html"
+      },
+      {
+        "name": "Sam's Club",
+        "url": "https://www.samsclub.com/p/airpods-generation-4-active-noise-cancellation/P990357939?xid=plp_product_3"
+      },
+      {
+        "name": "Staples",
+        "url": "https://www.staples.com/apple-airpods-noise-canceling-earbuds-with-usb-c-charging-case-4th-generation-bluetooth-white-mxp93ll-a/product_24616047"
+      },
+      {
+        "name": "Target",
+        "url": "https://www.target.com/p/apple-airpods-4/-/A-93606140?preselect=85978618#lnk=sametab"
+      }
+    ]
+  },
+  {
+    "item_id": "19897915079",
+    "product_name": "AirPods Max 2",
+    "walmart_price": 399.00,
+    "competitors": [
+      {
+        "name": "Amazon",
+        "url": "https://www.amazon.com/dp/B0GSS4SGZR/?th=1"
+      },
+      {
+        "name": "B&H Photo",
+        "url": "https://www.bhphotovideo.com/c/product/1959755-REG/apple_mhwk4am_a_airpods_max_2_wireless.html"
+      },
+      {
+        "name": "Best Buy",
+        "url": "https://www.bestbuy.com/product/apple-airpods-max-2-usb-c-midnight/JJGCQYH99P"
+      },
+      {
+        "name": "Costco",
+        "url": null
+      },
+      {
+        "name": "Sam's Club",
+        "url": "https://www.samsclub.com/ip/Apple-AirPods-Max-2/19906003964"
+      },
+      {
+        "name": "Staples",
+        "url": "https://www.staples.com/apple-airpods-max-wireless-active-noise-canceling-over-ear-headphones-bluetooth-purple-mww83am-a/product_24617066"
+      },
+      {
+        "name": "Target",
+        "url": "https://www.target.com/p/apple-airpods-max-2/-/A-1010453160?preselect=80585771#lnk=sametab"
+      }
+    ]
+  },
+  {
+    "item_id": "17835006350",
+    "product_name": "AirPods Pro 3",
+    "walmart_price": 179.00,
+    "competitors": [
+      {
+        "name": "Amazon",
+        "url": "https://www.amazon.com/dp/B0FQFB8FMG/?th=1"
+      },
+      {
+        "name": "B&H Photo",
+        "url": "https://www.bhphotovideo.com/c/product/1920300-REG/apple_mfhp4ll_a_airpods_pro_with_wireless.html"
+      },
+      {
+        "name": "Best Buy",
+        "url": "https://www.bestbuy.com/product/apple-airpods-pro-3-wireless-active-noise-cancelling-earbuds-with-heart-rate-sensing-feature-white/JJGCQLYK5F"
+      },
+      {
+        "name": "Costco",
+        "url": "https://www.costco.com/apple-airpods-pro-3-wireless-earbuds-active-noise-cancellation-hearing-aid-feature-heart-rate-sensing-includes-2-years-of-applecare.product.4000404510.html"
+      },
+      {
+        "name": "Sam's Club",
+        "url": "https://www.samsclub.com/ip/Apple-AirPods-Pro-3/17809063756?classType=REGULAR"
+      },
+      {
+        "name": "Staples",
+        "url": "https://www.staples.com/apple-airpods-pro-3-wireless-active-noise-canceling-earbuds-bluetooth-white-mfhp4ll-a/product_24663589"
+      },
+      {
+        "name": "Target",
+        "url": "https://www.target.com/p/ap2022-true-wireless-bluetooth-headphones/-/A-85978609#lnk=sametab"
+      }
+    ]
+  }
+]

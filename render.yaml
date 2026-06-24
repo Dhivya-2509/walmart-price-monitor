@@ -1,0 +1,31 @@
+services:
+  # ── Dashboard (Web Service) ───────────────────────────────────────────────
+  - type: web
+    name: walmart-price-monitor
+    env: python
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: python webapp_cloud.py
+    envVars:
+      - key: JSONBIN_KEY
+        sync: false   # set manually in Render dashboard
+      - key: JSONBIN_ID
+        sync: false   # set manually in Render dashboard
+
+  # ── Hourly Scraper (Cron Job) ─────────────────────────────────────────────
+  - type: cron
+    name: walmart-price-scraper
+    env: python
+    plan: free
+    schedule: "0 * * * *"   # every hour at :00
+    buildCommand: bash build.sh
+    startCommand: python monitor_cloud.py
+    envVars:
+      - key: JSONBIN_KEY
+        sync: false
+      - key: JSONBIN_ID
+        sync: false
+      - key: GMAIL_USER
+        sync: false   # e.g. walmart.pricebot@gmail.com
+      - key: GMAIL_APP_PASSWORD
+        sync: false   # 16-char Gmail App Password
