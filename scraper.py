@@ -392,7 +392,7 @@ async def scrape_all_prices(competitors: list[dict]) -> list[dict]:
             warmup = await context.new_page()
             await warmup.goto("about:blank", timeout=5000)
             await warmup.close()
-            await asyncio.sleep(3)
+            await asyncio.sleep(5)  # 5s: Chrome needs time to apply proxy settings
         except Exception:
             pass
 
