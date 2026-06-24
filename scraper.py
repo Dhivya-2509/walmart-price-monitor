@@ -70,11 +70,15 @@ SITE_SELECTORS: dict[str, list[str]] = {
         '#priceDisplay .price-block',
     ],
     "costco.com": [
+        # Verified via live DOM inspection 2026-06-24:
+        # Price is split across child spans inside these data-testid containers
+        '[data-testid="single-price-content"]',  # "$148.99" — most reliable
+        '[data-testid="price"]',                  # same content, outer wrapper
+        # Legacy fallbacks kept in case page structure changes
         '.your-price .value',
         '[automation-id="product-price"]',
         '.pricing-price .value',
         '[itemprop="price"]',
-        # Removed 'div[class*="price"] span' — too broad, picks up regular/non-sale price
     ],
 }
 
@@ -236,15 +240,14 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
                 try:
                     await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
 
-                    # For Costco: wait for price element to appear rather than
-                    # using a fixed timeout (price is loaded by a React component)
+                    # For Costco: wait for the React price component to render
+                    # (verified selector: data-testid="single-price-content")
                     if "costco.com" in hostname:
-                        costco_price_sels = (
-                            '.your-price .value, [automation-id="product-price"], '
-                            '.pricing-price .value, [itemprop="price"]'
-                        )
                         try:
-                            await page.wait_for_selector(costco_price_sels, timeout=wait_ms)
+                            await page.wait_for_selector(
+                                '[data-testid="single-price-content"], [data-testid="price"]',
+                                timeout=wait_ms,
+                            )
                         except Exception:
                             pass  # Fall through; _extract_price will try all selectors
                     else:
@@ -381,6 +384,17 @@ async def scrape_all_prices(competitors: list[dict]) -> list[dict]:
                 locale="en-US",
                 ignore_https_errors=True,
             )
+
+        # Warm-up: navigate a blank page then wait 3s.
+        # Chrome needs time to load proxy settings from the user profile —
+        # without this the first 2-3 real pages fail with ERR_PROXY_CONNECTION_FAILED.
+        try:
+            warmup = await context.new_page()
+            await warmup.goto("about:blank", timeout=5000)
+            await warmup.close()
+            await asyncio.sleep(3)
+        except Exception:
+            pass
 
         try:
             tasks = [_scrape_one(context, c, semaphore) for c in competitors]
