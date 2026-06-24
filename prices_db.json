@@ -31,7 +31,7 @@
     "url": "https://www.samsclub.com/p/airpods-gen-4-airpods-gen-4/P990357932?xid=plp_product_5",
     "price": 119.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:32:17.472569"
+    "last_updated": "2026-06-24T18:00:25.374078"
   },
   "11381374703|Staples": {
     "product_name": "AirPods 4",
@@ -40,7 +40,7 @@
     "url": "https://www.staples.com/apple-airpods-4-wireless-ambient-sound-earbuds-with-usb-c-charging-case-4th-generation-bluetooth-white-mxp63ll-a/product_24616046",
     "price": 129.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:32:17.472593"
+    "last_updated": "2026-06-24T18:00:25.374106"
   },
   "11381374703|Target": {
     "product_name": "AirPods 4",
@@ -49,7 +49,7 @@
     "url": "https://www.target.com/p/apple-airpods-4/-/A-93606140?preselect=85978615#lnk=sametab",
     "price": 99.99,
     "manual": false,
-    "last_updated": "2026-06-24T17:32:17.472600"
+    "last_updated": "2026-06-24T18:00:25.374113"
   },
   "11384707978|Amazon": {
     "product_name": "AirPods 4 ANC",
@@ -67,7 +67,7 @@
     "url": "https://www.bhphotovideo.com/c/product/1852457-REG/apple_mxp93ll_a_airpods_4_with_active.html",
     "price": 169.0,
     "manual": false,
-    "last_updated": "2026-06-24T15:20:47.642484"
+    "last_updated": "2026-06-24T18:01:57.499954"
   },
   "11384707978|Best Buy": {
     "product_name": "AirPods 4 ANC",
@@ -75,8 +75,8 @@
     "retailer": "Best Buy",
     "url": "https://www.bestbuy.com/site/apple-airpods-4-with-active-noise-cancellation-white/6447385.p?skuId=6447385",
     "price": 149.99,
-    "manual": true,
-    "last_updated": "2026-06-24T00:00:00"
+    "manual": false,
+    "last_updated": "2026-06-24T18:01:57.499977"
   },
   "11384707978|Costco": {
     "product_name": "AirPods 4 ANC",
@@ -94,7 +94,7 @@
     "url": "https://www.samsclub.com/p/airpods-generation-4-active-noise-cancellation/P990357939?xid=plp_product_3",
     "price": 169.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:33:21.185793"
+    "last_updated": "2026-06-24T18:01:57.500199"
   },
   "11384707978|Staples": {
     "product_name": "AirPods 4 ANC",
@@ -103,7 +103,7 @@
     "url": "https://www.staples.com/apple-airpods-noise-canceling-earbuds-with-usb-c-charging-case-4th-generation-bluetooth-white-mxp93ll-a/product_24616047",
     "price": 179.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:33:21.185824"
+    "last_updated": "2026-06-24T18:01:57.500213"
   },
   "11384707978|Target": {
     "product_name": "AirPods 4 ANC",
@@ -112,7 +112,7 @@
     "url": "https://www.target.com/p/apple-airpods-4/-/A-93606140?preselect=85978618#lnk=sametab",
     "price": 149.99,
     "manual": false,
-    "last_updated": "2026-06-24T17:24:47.190003"
+    "last_updated": "2026-06-24T18:01:57.500220"
   },
   "19897915079|Amazon": {
     "product_name": "AirPods Max 2",
@@ -130,7 +130,7 @@
     "url": "https://www.bhphotovideo.com/c/product/1959755-REG/apple_mhwk4am_a_airpods_max_2_wireless.html",
     "price": 539.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:14:25.886131"
+    "last_updated": "2026-06-24T18:03:18.215909"
   },
   "19897915079|Best Buy": {
     "product_name": "AirPods Max 2",
@@ -139,13 +139,13 @@
     "url": "https://www.bestbuy.com/product/apple-airpods-max-2-usb-c-midnight/JJGCQYH99P",
     "price": 479.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:25:30.410481"
+    "last_updated": "2026-06-24T18:03:18.215925"
   },
   "19897915079|Costco": {
     "product_name": "AirPods Max 2",
     "item_id": "19897915079",
     "retailer": "Costco",
-    "url": "",
+    "url": "https://www.costco.com/p/-/apple-airpods-max-2/4000444301?sp=grs&langId=-1",
     "price": 399.99,
     "manual": true,
     "last_updated": "2026-06-24T00:00:00"
@@ -157,16 +157,16 @@
     "url": "https://www.samsclub.com/ip/Apple-AirPods-Max-2/19906003964",
     "price": 549.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:34:02.080634"
+    "last_updated": "2026-06-24T18:03:18.216165"
   },
   "19897915079|Staples": {
     "product_name": "AirPods Max 2",
     "item_id": "19897915079",
     "retailer": "Staples",
-    "url": "https://www.staples.com/apple-airpods-max-wireless-active-noise-canceling-over-ear-headphones-bluetooth-purple-mww83am-a/product_24617066",
+    "url": "https://www.staples.com/apple-airpods-max-2-wireless-active-noise-cancelling-over-ear-headphones-bluetooth-midnight-mhwk4am-a/product_24691161",
     "price": 608.99,
     "manual": false,
-    "last_updated": "2026-06-24T17:34:02.080658"
+    "last_updated": "2026-06-24T18:03:18.216181"
   },
   "19897915079|Target": {
     "product_name": "AirPods Max 2",
@@ -175,7 +175,7 @@
     "url": "https://www.target.com/p/apple-airpods-max-2/-/A-1010453160?preselect=80585771#lnk=sametab",
     "price": 549.99,
     "manual": false,
-    "last_updated": "2026-06-24T17:25:30.410510"
+    "last_updated": "2026-06-24T18:03:18.216186"
   },
   "17835006350|Amazon": {
     "product_name": "AirPods Pro 3",
@@ -192,7 +192,7 @@
     "url": "https://www.bhphotovideo.com/c/product/1920300-REG/apple_mfhp4ll_a_airpods_pro_with_wireless.html",
     "price": 239.95,
     "manual": false,
-    "last_updated": "2026-06-24T17:15:45.768612"
+    "last_updated": "2026-06-24T18:04:50.154475"
   },
   "17835006350|Best Buy": {
     "product_name": "AirPods Pro 3",
@@ -201,7 +201,7 @@
     "url": "https://www.bestbuy.com/product/apple-airpods-pro-3-wireless-active-noise-cancelling-earbuds-with-heart-rate-sensing-feature-white/JJGCQLYK5F",
     "price": 179.99,
     "manual": false,
-    "last_updated": "2026-06-24T17:15:45.768632"
+    "last_updated": "2026-06-24T18:04:50.154488"
   },
   "17835006350|Costco": {
     "product_name": "AirPods Pro 3",
@@ -219,7 +219,7 @@
     "url": "https://www.samsclub.com/ip/Apple-AirPods-Pro-3/17809063756?classType=REGULAR",
     "price": 249.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:35:00.121895"
+    "last_updated": "2026-06-24T18:04:50.154691"
   },
   "17835006350|Staples": {
     "product_name": "AirPods Pro 3",
@@ -228,7 +228,7 @@
     "url": "https://www.staples.com/apple-airpods-pro-3-wireless-active-noise-canceling-earbuds-bluetooth-white-mfhp4ll-a/product_24663589",
     "price": 249.0,
     "manual": false,
-    "last_updated": "2026-06-24T17:35:00.121905"
+    "last_updated": "2026-06-24T18:04:50.154705"
   },
   "17835006350|Target": {
     "product_name": "AirPods Pro 3",
@@ -237,6 +237,6 @@
     "url": "https://www.target.com/p/ap2022-true-wireless-bluetooth-headphones/-/A-85978609#lnk=sametab",
     "price": 179.99,
     "manual": false,
-    "last_updated": "2026-06-24T17:26:21.087999"
+    "last_updated": "2026-06-24T18:04:50.154710"
   }
 }
