@@ -1,0 +1,42 @@
+name: Hourly Price Monitor
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour at :00
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+  scrape-and-alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements_cloud.txt
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements_cloud.txt
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Run price monitor
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python monitor_cloud.py
+
+      - name: Commit updated prices
+        run: |
+          git config --global user.name  "Price Monitor Bot"
+          git config --global user.email "bot@noreply.github.com"
+          git add prices_db.json
+          git diff --staged --quiet || git commit -m "chore: update prices [skip ci]"
+          git push
