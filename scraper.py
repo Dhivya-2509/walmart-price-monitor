@@ -7,6 +7,7 @@ NOTE: Chrome must be fully closed before running a scrape.
 """
 
 import asyncio
+import random
 import re
 import logging
 import shutil
@@ -200,15 +201,20 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
         result["error"] = "No URL"
         return result
 
+    # Random jitter 0-2s: staggers concurrent requests so the corporate proxy
+    # doesn't receive all connections simultaneously and fail with ERR_PROXY_CONNECTION_FAILED
+    await asyncio.sleep(random.uniform(0, 2.0))
+
     async with semaphore:
         page = None
         try:
             hostname = urlparse(url).hostname or ""
-            # Target/Best Buy need more time for React hydration
-            if "target.com" in hostname or "bestbuy.com" in hostname:
+            # Costco price loads via a separate React render; needs more time
+            if "costco.com" in hostname:
+                wait_ms = 11000
+            # Target/Best Buy need time for React hydration
+            elif "target.com" in hostname or "bestbuy.com" in hostname:
                 wait_ms = 8000
-            elif "costco.com" in hostname:
-                wait_ms = 7000
             else:
                 wait_ms = 5000
 
@@ -229,7 +235,20 @@ async def _scrape_one(context, competitor: dict, semaphore: asyncio.Semaphore) -
             for attempt in range(2):
                 try:
                     await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
-                    await page.wait_for_timeout(wait_ms)
+
+                    # For Costco: wait for price element to appear rather than
+                    # using a fixed timeout (price is loaded by a React component)
+                    if "costco.com" in hostname:
+                        costco_price_sels = (
+                            '.your-price .value, [automation-id="product-price"], '
+                            '.pricing-price .value, [itemprop="price"]'
+                        )
+                        try:
+                            await page.wait_for_selector(costco_price_sels, timeout=wait_ms)
+                        except Exception:
+                            pass  # Fall through; _extract_price will try all selectors
+                    else:
+                        await page.wait_for_timeout(wait_ms)
 
                     # Amazon bot/CAPTCHA detection: if we're on a robot-check page,
                     # bail immediately instead of extracting a wrong price.
@@ -311,7 +330,9 @@ def _copy_chrome_profile() -> str:
 
 async def scrape_all_prices(competitors: list[dict]) -> list[dict]:
     """Scrape all competitors using real Chrome with user profile."""
-    semaphore = asyncio.Semaphore(3)
+    # 2 concurrent max: 3 simultaneous HTTPS connections overwhelm the Walmart
+    # corporate proxy and cause ERR_PROXY_CONNECTION_FAILED for the first batch
+    semaphore = asyncio.Semaphore(2)
     profile_dir = None
 
     try:
